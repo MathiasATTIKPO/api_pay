@@ -1,11 +1,15 @@
 const payementServices = require('../services/payementServices');
+const http = require('http');
+
 
 exports.validateData = async (req, res) => {
 };
 
 exports.validatePayment = async (req, res) => {
     const { auth_token, phoneNumber, amount, identifier, network } = req.body;
-    const io = req.io;
+    const server = http.createServer(app);
+    const io = require('socket.io')(server); // où `server` est votre serveur HTTP
+
     //const {phoneNumber, amount} = req.body;
 
 

@@ -1,0 +1,66 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "API de Validation de Paiement",
+      "version": "1.0.0",
+      "description": "Documentation de l'API de validation de paiement"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000",
+        "description": "Serveur local"
+      }
+    ],
+    "paths": {
+      "/api/validate-payment": {
+        "post": {
+          "summary": "Valider un paiement",
+          "description": "Endpoint pour valider un paiement via l'API",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "phoneNumber": {
+                      "type": "number",
+                      "example": 123456789
+                    },
+                    "amount": {
+                      "type": "number",
+                      "example": 100.0
+                    },
+                    "auth_token": {
+                      "type": "number",
+                      "example": 123456789
+                    },
+                    "identifier": {
+                      "type": "number",
+                      "example": 100.0
+                    },
+                    "network": {
+                      "type": "number",
+                      "example": 100.0
+                    }
+                  },
+                  "required": ["phoneNumber", "amount", "auth_token", "identifier", "network"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Paiement validé avec succès"
+            },
+            "400": {
+              "description": "Erreur de validation"
+            },
+            "500": {
+              "description": "Erreur du serveur"
+            }
+          }
+        }
+      }
+    }
+  }
